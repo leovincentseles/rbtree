@@ -9,9 +9,8 @@
   linux/lib/rbtree.c
 */
 
-#include <linux/rbtree_augmented.h>
-#include <linux/export.h>
-
+#include <rbtree_augmented.h>
+#define new new_n
 /*
  * red-black trees properties:  http://en.wikipedia.org/wiki/Rbtree
  *
@@ -595,3 +594,5 @@ struct rb_node *rb_first_postorder(const struct rb_root *root)
 
 	return rb_left_deepest_node(root->rb_node);
 }
+
+#undef new

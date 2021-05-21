@@ -17,8 +17,14 @@
 #ifndef __TOOLS_LINUX_PERF_RBTREE_H
 #define __TOOLS_LINUX_PERF_RBTREE_H
 
-#include <linux/kernel.h>
-#include <linux/stddef.h>
+#include <cstddef>
+#define WRITE_ONCE(x, val) ((x) = (val))
+#define unlikely 
+#define new new_n
+#ifndef __always_inline
+#define __always_inline inline
+#endif
+#include <stdio.h>
 
 struct rb_node {
 	unsigned long  __rb_parent_color;
@@ -151,5 +157,7 @@ static inline void rb_replace_node_cached(struct rb_node *victim,
 		root->rb_leftmost = new;
 	rb_replace_node(victim, new, &root->rb_root);
 }
+
+#undef new
 
 #endif /* __TOOLS_LINUX_PERF_RBTREE_H */

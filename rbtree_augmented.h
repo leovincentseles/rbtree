@@ -15,9 +15,8 @@
 #ifndef _TOOLS_LINUX_RBTREE_AUGMENTED_H
 #define _TOOLS_LINUX_RBTREE_AUGMENTED_H
 
-#include <linux/compiler.h>
-#include <linux/rbtree.h>
-
+#include <rbtree.h>
+#define new new_n
 /*
  * Please note - only struct rb_augment_callbacks and the prototypes for
  * rb_insert_augmented() and rb_erase_augmented() are intended to be public.
@@ -305,4 +304,5 @@ rb_erase_augmented_cached(struct rb_node *node, struct rb_root_cached *root,
 	rb_erase_augmented(node, &root->rb_root, augment);
 }
 
+#undef new
 #endif /* _TOOLS_LINUX_RBTREE_AUGMENTED_H */
